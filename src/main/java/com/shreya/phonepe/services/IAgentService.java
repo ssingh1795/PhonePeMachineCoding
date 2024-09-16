@@ -13,7 +13,7 @@ public interface IAgentService {
      * Assigns an issue to the first available agent who can handle the issue based on their expertise.
      * @param issue The issue to be assigned.
      */
-    void assignIssue(Issue issue);
+    void  assignIssue(Issue issue);
 
     /**
      * Marks the current issue for the given agent as resolved.

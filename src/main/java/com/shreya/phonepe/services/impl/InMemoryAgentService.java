@@ -14,11 +14,12 @@ public class InMemoryAgentService implements IAgentService {
     private int agentCounter;
 
     public InMemoryAgentService() {
-        this.agents = new ConcurrentHashMap<>();
+        this.agents = new ConcurrentHashMap<>(); //thread safety if decided to use multhreading
         this.workHistory = new ConcurrentHashMap<>();
         this.agentCounter = 0; // To generate unique agent IDs like A1, A2, etc.
     }
 
+   @synchronized
     @Override
     public void addAgent(String agentEmail, String agentName, List<String> issueTypes) {
         String agentId = "A" + (++agentCounter);
@@ -35,7 +36,8 @@ public class InMemoryAgentService implements IAgentService {
         for (Agent agent : agents.values()) {
             if (!agent.isBusy()) {
                 //ideally this should be correct if (!agent.isBusy() && agent.canHandleIssue(issue.getIssueType())) {
-                //as we need to match to expertise but if i do that in current exmaple I2 will be assigned to A1 waitlist as A2 does not have expertise
+                //as we need to match to expertise but if i do that in current exmaple I2 will
+                // be assigned to A1 waitlist as A2 does not have expertise
                 freeAgent = agent;
                 break; // Assign to the first free agent found
             }

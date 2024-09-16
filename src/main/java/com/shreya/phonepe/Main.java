@@ -15,7 +15,7 @@ public class Main {
 
         // Create issues with consistent types that match agent expertise
         Issue i1 = issueService.createIssue("T1", "Payment Related", "Payment Failed", "Payment Failed but debited", "user1@test.com");
-        Issue i2 = issueService.createIssue("T2", "Gold Related", "Purchase Failed", "Failed to purchase gold", "user2@test.com");
+        Issue i2 = issueService.createIssue("T2", "Gold Related", "Purchase Failed", "Failed to purchase gold", "testUser2@test.com");
         Issue i3 = issueService.createIssue("T3", "Payment Related", "Payment Failed", "My payment failed but money is debited", "testUser2@test.com");
 
         // Add agents with expertise in issue types
